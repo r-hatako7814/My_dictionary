@@ -8,6 +8,7 @@ devise_for :customers,skip: [:passwords,], controllers: {
   sessions: 'customer/sessions'
 }
 root :to => "customer/homes#top"
+resources
 # 管理者用
 # URL /admin/sign_in ...
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
