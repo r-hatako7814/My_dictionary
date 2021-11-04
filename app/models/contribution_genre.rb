@@ -1,0 +1,2 @@
+class ContributionGenre < ApplicationRecord
+end
