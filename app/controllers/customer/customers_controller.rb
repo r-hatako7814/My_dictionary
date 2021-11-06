@@ -12,7 +12,7 @@ class Customer::CustomersController < ApplicationController
   def confirm
   end
 
-  def exit
+  def exited
   end
 
 end
