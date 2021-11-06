@@ -9,10 +9,10 @@ class Customer::CustomersController < ApplicationController
   def update
   end
 
-  def confirm
+  def unsubscribe
   end
 
-  def exited
+  def withdraw
   end
 
 end

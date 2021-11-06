@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  scope module: :admin do
+  namespace :admin do
     resources :customers,only:[:index,:show,:edit,:update]
     resources :genres,only:[:index,:create,:edit,:update]
   end
