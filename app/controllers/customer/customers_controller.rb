@@ -30,10 +30,10 @@ class Customer::CustomersController < ApplicationController
     flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to new_customer_session_path
   end
-  
-  
+
+
   private
-  
+
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :customer_image)
   end

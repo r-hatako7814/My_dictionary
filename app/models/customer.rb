@@ -6,4 +6,5 @@ class Customer < ApplicationRecord
 
   has_many :contibutions, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  attachment :customer_image
 end
