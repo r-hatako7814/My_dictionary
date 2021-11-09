@@ -1,5 +1,5 @@
 <h4> 会員情報編集</h4>
-<% form_with model:@customer, local true do |f| %>
+<%= form_with model:@customer,url:customers_path, local:true do |f| %>
 <table class = "table mt-3">
   <tr>
     <td style = "border: none;">
@@ -16,7 +16,7 @@
       <%= f.text_field :first_name, autofocus: true %>
     </td>
   </tr>
-  
+
   <tr>
     <td style = "border: none;">
       <%= f.label "フリガナ" %>
@@ -26,7 +26,7 @@
       <%= f.text_field :first_name_kana, autofocus: true %>
     </td>
   </tr>
-  
+
   <tr>
     <td style = "border: none;">
       <%= f.label "メールアドレス" %>
@@ -35,13 +35,14 @@
       <%= f.text_field :email, autofocus: true %>
     </td>
   </tr>
-  
+
   <tr>
     <td style="border: none;">
       <%= f.submit '編集内容を保存', class: "btn btn-sm btn-primary" %>
     </td>
+  <% end %>
     <td style="border: none;">
-      <%= link_to "退会する", customers_unsubscribe_path, class "btn btn-sm btn-danger" %>
+      <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-sm btn-danger" %>
     </td>
   </tr>
 </table>

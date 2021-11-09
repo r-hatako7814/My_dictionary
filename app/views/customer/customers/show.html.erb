@@ -17,7 +17,7 @@
           </td>
         </tr>
       </table>
-      <%= link_to "ユーザー情報編集", customers_edit_path(current_customer), class:"btn btn-outline-secondary btn-block" %>
+      <%= link_to "ユーザー情報編集", customers_edit_path(@customer.id), class:"btn btn-outline-secondary btn-block" %>
     </div>
     <div class = "col-md-9">
       <div class = "table table-hover table-inverse table-striped table-borderd">
@@ -33,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-        <%# @customer.contribution.each do |contribution| %>
+        <%# @customer.contributions.each do |contribution| %>
         <tr>
           <td><%#= customer.contribution.created_at.strftime('%Y/%m/%d') %></td>
           <td><%#= customer.contribution.title %></td>

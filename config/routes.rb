@@ -3,10 +3,6 @@ Rails.application.routes.draw do
 
   # 顧客用
   # URL /customers/sign_in ...
-  devise_for :customers,skip: [:passwords,], controllers: {
-    registrations: "customer/registrations",
-    sessions: 'customer/sessions'
-  }
   root :to => "customer/homes#top"
   get "/about" => "customer/homes#about"
 
@@ -16,6 +12,10 @@ Rails.application.routes.draw do
   get "/customers/unsubscribe" => "customer/customers#unsubscribe"
   patch "/customers/withdraw" => "customer/customers#withdraw"
 
+  devise_for :customers,skip: [:passwords,], controllers: {
+    registrations: "customer/registrations",
+    sessions: 'customer/sessions'
+  }
   get  'search' => 'searches#search'
 
   scope module: :customer do

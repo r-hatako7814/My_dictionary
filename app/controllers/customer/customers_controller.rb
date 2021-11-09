@@ -9,9 +9,9 @@ class Customer::CustomersController < ApplicationController
   end
 
   def update
-    @customer = update(customer_params)
+    @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to customers_my_page_path
+      redirect_to customers_my_dictionary_path
       flash[:notice_customer] = "会員情報が更新されました。"
     else
       @customer = current_customer
