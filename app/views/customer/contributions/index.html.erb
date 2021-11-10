@@ -1,0 +1,38 @@
+<div class = "container">
+  <div class = "row">
+    <h1 class="p-3 mb-2 bg-secondary text-white">
+      他者投稿一覧
+    </h1></br>
+    <table class="table table-hover table-inverse table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>記述内容</th>
+          <th>意味</th>
+          <th>記述日時</th>
+          <th>詳細</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @contributions.each do |contribution| %>
+        <tr>
+          <td>
+            <%= contribution.title %>
+          </td>
+          <td>
+            <%= contribution.body %>
+          </td>
+          <td>
+            <%= contribution.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+          </td>
+          <td>
+            <%= link_to "詳細へ", contribution_path(contribution), class: "btn btn-sm btn-primary" %>
+          </td>
+          <% end %>
+        </tr>
+      </tbody>
+    </table>
+    <div class = "mx-auto">
+      <%= paginate @contributions %>
+    </div>
+  </div>
+</div>

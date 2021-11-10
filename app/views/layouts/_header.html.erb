@@ -12,7 +12,8 @@
             <li><%= link_to 'ジャンル一覧', admin_genres_path,class: 'fas fa-tags nav-link text-secondary' %></li>
             <li><%= link_to 'ログアウト' , destroy_admin_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-secondary' %></li>
           <% elsif customer_signed_in? %>
-            <li><%= link_to 'MyDictionary', customers_my_dictionary_path,class: 'fas fa-book-reader' %></li>
+            <li><%= link_to 'MyDictionary', customers_my_dictionary_path,class: 'fas fa-book-reader nav-link text-secondary' %></li>
+            <li><%= link_to '色んな投稿を見る', contributions_path,class: 'fas fa-list-alt nav-link text-secondary' %></li>
             <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-secondary' %></li>
           <% else %>
             <li><%= link_to 'About', about_path,class: 'fas fa-question-circle nav-link text-secondary' %></li>

@@ -34,12 +34,10 @@
           <% end %>
         </tr>
       </tbody>
-      <tfoot>
-        <td>
-          <%= paginate @customers %>
-        </td>
-      </tfoot>
       <% end %>
     </table>
+    <div class = "mx-auto">
+      <%= paginate @customers %>
+    </div>
   </div>
 </div>

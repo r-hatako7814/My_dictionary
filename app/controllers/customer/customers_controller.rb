@@ -2,6 +2,8 @@ class Customer::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
+    @contribution = Contribution.new
+    # @contributions = Contribution.all
   end
 
   def edit

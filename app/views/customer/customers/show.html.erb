@@ -13,11 +13,23 @@
             投稿数：
           </th>
           <td>
-            <%#= @customer.contributions.count %>
+            <%= @customer.contributions.count %>
           </td>
         </tr>
       </table>
       <%= link_to "ユーザー情報編集", customers_edit_path(@customer.id), class:"btn btn-outline-secondary btn-block" %>
+      <%= form_with model:@contribution,url:contributions_path, method: :post, local:true do |f| %>
+        <%= f.text_field :title , placeholder: "タイトル" %>
+        <%= f.text_area :body , placeholder: "内容" %>
+        <%= f.label :genre, 'ジャンル' %>
+          <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |genre| %>
+            <%= genre.label do %>
+              <%= genre.check_box %>
+              <%= genre.text %>
+            <% end %>
+          <% end %>
+        <%= f.submit "知識を保存", class: "btn btn-success" %>
+      <% end %>
     </div>
     <div class = "col-md-9">
       <div class = "table table-hover table-inverse table-striped table-borderd">
@@ -26,21 +38,23 @@
         </div>
         <thead>
           <tr>
-            <th>記述日</th>
-            <th>記述内容</th>
-            <th>意味</th>
-            <th>詳細</th>
+            <td>記述内容</td>
+            <td>意味</td>
+            <td>記述日</td>
+            <td>詳細</td>
           </tr>
         </thead>
         <tbody>
-        <%# @customer.contributions.each do |contribution| %>
-        <tr>
-          <td><%#= customer.contribution.created_at.strftime('%Y/%m/%d') %></td>
-          <td><%#= customer.contribution.title %></td>
-          <td><%#= customer.contribution.body %></td>
-          <td><%#= link_to "詳細へ", contribution_path(contribution), class: "btn btn-sm btn-primary" %></td>
-        </tr>
-        <%# end %>
+        <% if @customer.contributions.present? %>
+        <% @customer.contributions.each do |contribution| %>
+          <tr>
+            <td><%= contribution.title %></td>
+            <td><%= contribution.body %></td>
+            <td><%= contribution.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+            <td><%= link_to "詳細へ", contribution_path(contribution), class: "btn btn-sm btn-primary" %></td>
+          <% end %>
+          </tr>
+        <% end %>
         </tbody>
       </div>
     </div>
