@@ -3,7 +3,10 @@ class Customer::CustomersController < ApplicationController
   def show
     @customer = current_customer
     @contribution = Contribution.new
-    # @contributions = Contribution.all
+    @contributions = @customer.contributions.order("created_at DESC").page(params[:page]).per(6)
+    Genre.all.each do |genre|
+      @contribution.contribution_genres.build(genre_id: genre.id)
+    end
   end
 
   def edit
@@ -37,7 +40,7 @@ class Customer::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :customer_image)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :customer_image, :is_deleted)
   end
 
 end

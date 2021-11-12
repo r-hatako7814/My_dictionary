@@ -1,8 +1,10 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-md-3">
-      <%= attachment_image_tag @customer, :customer_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-      <table class = "text-align-center" border = "5" rules = "none">
+      <div class = "text-center" style = "margin-top:100px;">
+        <%= attachment_image_tag @customer, :customer_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+      </div>
+      <table border = "5" rules = "none" style = width:100%;>
         <tr>
           <td>
             <%= @customer.last_name %><%= @customer.first_name %>
@@ -17,25 +19,33 @@
           </td>
         </tr>
       </table>
-      <%= link_to "ユーザー情報編集", customers_edit_path(@customer.id), class:"btn btn-outline-secondary btn-block" %>
+      <div class = "mt-3">
+        <%= link_to "ユーザー情報編集", customers_edit_path(@customer.id), class:"btn btn-outline-secondary btn-block" %>
+      </div>
+      <h3 class = "mt-2">新規投稿</h3>
       <%= form_with model:@contribution,url:contributions_path, method: :post, local:true do |f| %>
-        <%= f.text_field :title , placeholder: "タイトル" %>
-        <%= f.text_area :body , placeholder: "内容" %>
-        <%= f.label :genre, 'ジャンル' %>
-          <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |genre| %>
-            <%= genre.label do %>
-              <%= genre.check_box %>
-              <%= genre.text %>
-            <% end %>
-          <% end %>
+      <div class = "mt-4">
+        <%= f.text_field :title , placeholder: "タイトル",size:"28%" %>
+      </div>
+      <div class = "mt-1">
+        <%= f.text_area :body , placeholder: "内容" ,size:"28%" %>
+      </div>
+        <%= f.label :genre, 'ジャンル' %></br>
+        <%= f.fields_for :contribution_genres do |contribution_genre| %>
+          <label>
+            <%= contribution_genre.check_box :genre_id, { checked: false }, contribution_genre.object.genre_id, false %>
+            <%= contribution_genre.object.genre.name %>
+          </label>
+        <% end %>
         <%= f.submit "知識を保存", class: "btn btn-success" %>
       <% end %>
     </div>
     <div class = "col-md-9">
-      <div class = "table table-hover table-inverse table-striped table-borderd">
+      <div class = "table table-hover table-inverse table-striped table-borderd" style = "padding-bottom: 100px;">
         <div class = "p-3 mb-2 bg-secondary text-white">
           <h3>MyDictionary</h3>
         </div>
+        <table class = "text-center" style = "width:100%;">
         <thead>
           <tr>
             <td>記述内容</td>
@@ -45,17 +55,27 @@
           </tr>
         </thead>
         <tbody>
-        <% if @customer.contributions.present? %>
-        <% @customer.contributions.each do |contribution| %>
-          <tr>
-            <td><%= contribution.title %></td>
-            <td><%= contribution.body %></td>
-            <td><%= contribution.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-            <td><%= link_to "詳細へ", contribution_path(contribution), class: "btn btn-sm btn-primary" %></td>
+        <% if @contributions.present? %>
+          <% @contributions.each do |contribution| %>
+            <tr>
+              <td><%= contribution.title %></td>
+              <td><%= contribution.body %></td>
+              <td><%= contribution.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+              <td><%= link_to "詳細へ", contribution_path(contribution), class: "btn btn-sm btn-primary" %></td>
+              <td>
+                <p>
+                  <%= render 'customer/favorites/favorite-btn', contribution: contribution %>
+                </p>
+              </td>
+
           <% end %>
-          </tr>
+            </tr>
         <% end %>
         </tbody>
+        </table>
+        <div style = "margin-left:330px;">
+          <%= paginate @contributions %>
+        </div>
       </div>
     </div>
   </div>

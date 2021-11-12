@@ -8,11 +8,12 @@ class Customer::ContributionsController < ApplicationController
   end
 
   def index
-    @contributions = Contribution.all.page(params[:page]).per(7)
+    @contributions = Contribution.order("created_at DESC").page(params[:page]).per(6)
   end
 
   def show
     @contribution = Contribution.find(params[:id])
+    @customer = @contribution.customer
   end
 
   def edit
@@ -35,6 +36,6 @@ class Customer::ContributionsController < ApplicationController
   private
 
   def contribution_params
-    params.require(:contribution).permit(:title, :body, genre_ids: [])
+    params.require(:contribution).permit(:title, :body, contribution_genres_attributes: [:genre_id])
   end
 end
