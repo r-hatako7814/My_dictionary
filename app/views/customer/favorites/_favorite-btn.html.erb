@@ -1,9 +1,9 @@
-<% if contribution.favorited_by?(current_customer) %>
-    <%= link_to contribution_favorites_path(contribution),method: :delete, remote: true do %>
+<% if current_customer.already_favorited?(contribution) %>
+    <%= link_to contribution_favorites_path(contribution), class: "favorite-btn-#{contribution.id}" ,method: :delete, remote: true do %>
       ♥<%= contribution.favorites.count %>いいね
     <% end %>
 <% else %>
-    <%=link_to contribution_favorites_path(contribution),method: :post, remote: true do %>
+    <%=link_to contribution_favorites_path(contribution), class: "favorite-btn-#{contribution.id}", method: :post, remote: true do %>
       ♡<%= contribution.favorites.count %>いいね
     <% end %>
 <% end %>

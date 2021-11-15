@@ -44,9 +44,9 @@
           <%= f.label "会員ステータス" %>
         </td>
         <td>
-          <%= f.radio_button :is_deleted, "active" , checked: "checked" %>
+          <%= f.radio_button :is_deleted, "false" , checked: "checked" %>
           <%= f.label :is_deleted, "有効", value:"有効" %>
-          <%= f.radio_button :is_deleted, "retire" %>
+          <%= f.radio_button :is_deleted, "true" %>
           <%= f.label :is_deleted, "無効", value:"無効" %>
         </td>
       </tr>

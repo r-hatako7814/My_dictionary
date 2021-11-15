@@ -1,1 +1,1 @@
-  $(".favorite-btn").html("<%= j(render 'customer/favorites/favorite-btn', contribution: @contribution) %>");
+  $(".favorite-btn-<%= @contribution.id %>").html("<%= j(render 'customer/favorites/favorite-btn', contribution: @contribution) %>");

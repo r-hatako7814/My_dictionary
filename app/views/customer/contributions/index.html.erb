@@ -27,23 +27,11 @@
             <td>
               <%= link_to "詳細へ", contribution_path(contribution), class: "btn btn-sm btn-primary" %>
             </td>
-            <% if contribution.favorited_by?(current_customer) %>
             <td>
               <p>
-                <%= link_to contribution_favorites_path(contribution),method: :delete do %>
-                  ♥<%= contribution.favorites.count %>いいね
-                <% end %>
+               <%= render 'customer/favorites/favorite-btn', contribution: contribution %>
               </p>
             </td>
-            <% else %>
-            <td>
-              <p>
-                <%=link_to contribution_favorites_path(contribution),method: :post do %>
-                  ♡<%= contribution.favorites.count %>いいね
-                <% end %>
-              </p>
-            </td>
-            <% end %>
           </tr>
         <% end %>
       </tbody>

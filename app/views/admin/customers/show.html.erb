@@ -24,7 +24,7 @@
       </tr>
       <tr>
         <td>会員ステータス</td>
-        <% if @customer.is_deleted == "retire" %>
+        <% if @customer.is_deleted %>
           <td>無効</td>
         <% else %>
           <td>有効</td>
