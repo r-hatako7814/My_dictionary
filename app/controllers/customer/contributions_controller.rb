@@ -32,6 +32,13 @@ class Customer::ContributionsController < ApplicationController
     redirect_to customers_my_dictionary_path
   end
 
+  def index_search
+    @contributions = Contribution.order("created_at DESC").page(params[:page]).per(6).search(params[:keyword])
+
+    @keyword = params[:keyword]
+    render "customer/contributions/index"
+  end
+
 
   private
 

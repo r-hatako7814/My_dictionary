@@ -45,6 +45,26 @@
         <div class = "p-3 mb-2 bg-secondary text-white">
           <h3>MyDictionary</h3>
         </div>
+        
+        <div class = "show-search-form">
+        <%= form_with url: show_search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword, value: @keyword %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
+
+
+        <!--<p id = "notice"><%#= notice %></p>-->
+        <!--<form id = "search_form">-->
+        <!--  <label for = "search_input">-->
+        <!--    検索-->
+        <!--  </label>-->
+        <!--  <input type = "text" id = "search_input" autocomplete = "off">-->
+        <!--</form>-->
+        <!--<div id = "search_result_field"></div>-->
+
+
+
         <table class = "text-center" style = "width:100%;">
         <thead>
           <tr>

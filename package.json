@@ -1,5 +1,7 @@
 {
   "name": "My_dictionary",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
 }

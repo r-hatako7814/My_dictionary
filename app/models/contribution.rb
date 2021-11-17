@@ -9,4 +9,12 @@ class Contribution < ApplicationRecord
   def favorited_by?(customer)
     favorites.where(customer_id: customer.id).exists?
   end
+
+  def self.search(keyword)
+    where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+  end
+
+  # def self.search_show(keyword)
+  #   where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+  # end
 end

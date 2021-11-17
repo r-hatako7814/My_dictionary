@@ -16,8 +16,12 @@ Rails.application.routes.draw do
     registrations: "customer/registrations",
     sessions: 'customer/sessions'
   }
-  get  'search' => 'searches#search'
+  get 'index_search' => 'customer/contributions#index_search'
+  get 'show_search' => 'customer/customers#show_search'
+  # get 'search' => 'contributions#search'
 
+  # get 'search' => 'customer/contributions#search'
+  
   scope module: :customer do
     resources :contributions, only: [:create,:index,:show,:edit,:update,:destroy] do
       resource :favorites, only: [:create,:destroy]

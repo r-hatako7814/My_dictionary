@@ -36,6 +36,16 @@ class Customer::CustomersController < ApplicationController
     redirect_to new_customer_session_path
   end
 
+  def show_search
+    @customer = current_customer
+    @contribution = Contribution.new
+    @contributions = @customer.contributions.order("created_at DESC").page(params[:page]).per(6).search(params[:keyword])
+    @keyword = params[:keyword]
+    Genre.all.each do |genre|
+      @contribution.contribution_genres.build(genre_id: genre.id)
+    end
+    render "customer/customers/show"
+  end
 
   private
 

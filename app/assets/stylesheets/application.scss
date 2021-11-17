@@ -13,8 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+ .image-top{
+   margin: 150px 50px;
+   width: 50%;
+   height: 300vw;
+   object-fit: cover;
+ }
+ 
+
+ .row{
+  padding-bottom: 250px;
+ }
   @import "bootstrap";
   @import 'font-awesome-sprockets';
   @import 'font-awesome';
 
-  
