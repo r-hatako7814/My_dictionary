@@ -23,14 +23,3 @@
 //= require("../search_post")
 
 //= require_tree .
-
-$(function() {
-      console.log("tete")
-    $('.slick-top').slick({
-      // console.log('test')
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 2000,
-    });
-});
-

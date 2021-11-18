@@ -11,10 +11,11 @@ class Contribution < ApplicationRecord
   end
 
   def self.search(keyword)
-    where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+    if keyword.present?
+      Contribution.where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
+    else
+      Contribution.all
+    end
   end
 
-  # def self.search_show(keyword)
-  #   where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
-  # end
 end
