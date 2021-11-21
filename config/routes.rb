@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   }
   get 'index_search' => 'customer/contributions#index_search'
   get 'show_search' => 'customer/customers#show_search'
+  get 'increment_show_search' => 'customer/customers#increment_show_search'
   # get 'search' => 'contributions#search'
 
   # get 'search' => 'customer/contributions#search'

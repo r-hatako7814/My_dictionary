@@ -45,10 +45,10 @@
         <div class = "p-3 mb-2 bg-secondary text-white">
           <h3>MyDictionary</h3>
         </div>
-        
+
         <div class = "show-search-form">
         <%= form_with url: show_search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :keyword, value: @keyword %>
+          <%= f.text_field :keyword, value: @keyword, id: "show_search_keyword" %>
           <%= f.submit "検索" %>
         <% end %>
       </div>
@@ -64,35 +64,35 @@
         <!--<div id = "search_result_field"></div>-->
 
 
-
-        <table class = "text-center" style = "width:100%;">
-        <thead>
-          <tr>
-            <td>記述内容</td>
-            <td>意味</td>
-            <td>記述日</td>
-            <td>詳細</td>
-          </tr>
-        </thead>
-        <tbody>
-        <% if @contributions.present? %>
-          <% @contributions.each do |contribution| %>
+        <div class = "show_search_result">
+          <table class = "text-center" style = "width:100%;">
+          <thead>
             <tr>
-              <td><%= contribution.title %></td>
-              <td><%= contribution.body %></td>
-              <td><%= contribution.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
-              <td><%= link_to "詳細へ", contribution_path(contribution), class: "btn btn-sm btn-primary" %></td>
-              <td>
-                <p>
-                  <%= render 'customer/favorites/favorite-btn', contribution: contribution %>
-                </p>
-              </td>
-
-          <% end %>
+              <td>記述内容</td>
+              <td>意味</td>
+              <td>記述日</td>
+              <td>詳細</td>
             </tr>
-        <% end %>
-        </tbody>
-        </table>
+          </thead>
+          <tbody>
+          <% if @contributions.present? %>
+            <% @contributions.each do |contribution| %>
+              <tr>
+                <td><%= contribution.title %></td>
+                <td><%= contribution.body %></td>
+                <td><%= contribution.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+                <td><%= link_to "詳細へ", contribution_path(contribution), class: "btn btn-sm btn-primary" %></td>
+                <td>
+                  <p>
+                    <%= render 'customer/favorites/favorite-btn', contribution: contribution %>
+                  </p>
+                </td>
+  
+            <% end %>
+              </tr>
+          <% end %>
+          </tbody>
+          </table>
         <div style = "margin-left:330px;">
           <%= paginate @contributions %>
         </div>

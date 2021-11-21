@@ -47,6 +47,16 @@ class Customer::CustomersController < ApplicationController
     render "customer/customers/show"
   end
 
+  def increment_show_search
+    @customer = current_customer
+    @contribution = Contribution.new
+    @contributions = @customer.contributions.order("created_at DESC").page(params[:page]).per(6).search(params[:keyword])
+      respond_to do |format|
+        format.html
+        format.json
+      end
+  end
+  
   private
 
   def customer_params
