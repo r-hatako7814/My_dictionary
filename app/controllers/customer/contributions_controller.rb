@@ -4,7 +4,7 @@ class Customer::ContributionsController < ApplicationController
     @contribution = Contribution.new(contribution_params)
     @contribution.customer = current_customer
     @contribution.save!
-    redirect_to customers_my_dictionary_path
+    redirect_to customers_my_dictionary_path(current_customer)
   end
 
   def index
@@ -23,13 +23,13 @@ class Customer::ContributionsController < ApplicationController
   def update
     @contribution = Contribution.find(params[:id])
     @contribution.update(contribution_params)
-    redirect_to customers_my_dictionary_path
+    redirect_to customers_my_dictionary_path(current_customer)
   end
 
   def destroy
     @contribution = Contribution.find(params[:id])
     @contribution.destroy
-    redirect_to customers_my_dictionary_path
+    redirect_to customers_my_dictionary_path(current_customer)
   end
 
   def index_search

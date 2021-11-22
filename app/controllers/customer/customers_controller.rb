@@ -1,7 +1,7 @@
 class Customer::CustomersController < ApplicationController
 
   def show
-    @customer = current_customer
+    @customer = Customer.find(params[:id])
     @contribution = Contribution.new
     @contributions = @customer.contributions.order("created_at DESC").page(params[:page]).per(6)
     Genre.all.each do |genre|
@@ -16,7 +16,7 @@ class Customer::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to customers_my_dictionary_path
+      redirect_to customers_my_dictionary_path(current_customer)
       flash[:notice_customer] = "会員情報が更新されました。"
     else
       @customer = current_customer
@@ -56,7 +56,7 @@ class Customer::CustomersController < ApplicationController
         format.json
       end
   end
-  
+
   private
 
   def customer_params
