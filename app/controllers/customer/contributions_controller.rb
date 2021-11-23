@@ -4,7 +4,7 @@ class Customer::ContributionsController < ApplicationController
     @contribution = Contribution.new(contribution_params)
     @contribution.customer = current_customer
     @contribution.save!
-    redirect_to customers_my_dictionary_path(current_customer)
+      redirect_to customers_my_dictionary_path(current_customer)
   end
 
   def index

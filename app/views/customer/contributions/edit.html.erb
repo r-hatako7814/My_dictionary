@@ -1,30 +1,22 @@
-<div class = "container">
-  <div class = "row">
-    <h4>投稿内容編集</h4>
-
+<div class = "box">
+    <h4 class = "edit_contribution_heading">投稿内容編集</h4>
     <%= form_with model:@contribution,url:contribution_path, method: :patch ,local:true do |f| %>
-    <table class = "table mt-3">
-      <tr>
-        <td style = "border: none;">
-          <%= f.label "投稿内容" %>
-        </td>
-        <td>
-          <%= f.text_field :title, autofocus: true %>
-        </td>
-      </tr>
-      <tr>
-        <td style = "border: none;">
-
-          <%= f.label "意味" %>
-        </td>
-        <td style = "border: none;">
-          <%= f.text_area :body, autofocus: true %>
-        </td>
-      </tr>
-    </table>
-    <div class = "mx-auto">
-      <%= f.submit '編集内容を保存', class: "btn btn-primary" %>
+    <div class = "box_child">
+      <div class = "edit_contribution_label">
+        <%= f.label "投稿内容" %>
+      </div>
+      <div class = "edit_contribution_title">
+        <%= f.text_field :title, autofocus: true %>
+      </div>
+      <div class = "edit_contribution_body_label">
+        <%= f.label "意味" %>
+      </div>
+      <div class = "edit_contribution_body_form">
+        <%= f.text_area :body, autofocus: true,  size: "40x10"%>
+      </div>
+      <div class = "mx-auto">
+        <%= f.submit '編集内容を保存', class: "btn btn-primary" %>
+      </div>
     </div>
     <% end %>
-  </div>
 </div>

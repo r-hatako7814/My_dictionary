@@ -1,3 +1,37 @@
 // Place all the styles related to the customer/contributions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.box{
+    margin: 2em auto;
+    background: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+    width: 600px;
+    border-radius: 8px;
+}
+
+.edit_contribution_heading{
+  font-size: 3em;
+    background: #b3852b;
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.box_child{
+  text-align: center;
+}
+
+.edit_contribution_body_form{
+  margin-bottom: 200px;
+}
+
+.edit_contribution_label{
+  font-size: 1.5em;
+}
+
+.edit_contribution_body_label{
+  font-size: 1.5em;
+}

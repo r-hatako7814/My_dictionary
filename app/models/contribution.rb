@@ -17,5 +17,4 @@ class Contribution < ApplicationRecord
       Contribution.all
     end
   end
-
 end
