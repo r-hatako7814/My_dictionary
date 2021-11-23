@@ -6,6 +6,29 @@
 //   width: 200px;
 //   outline: none;
 // }
+
+.box30 {
+    margin: 2em 0;
+    background: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+    width: 100%;
+}
+.box30 .box-title {
+    font-size: 1.2em;
+    background: #FF0000;
+    padding: 4px;
+    text-align: center;
+    color: #FF0;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+.box30 p {
+    padding: 15px 20px;
+    margin: 0;
+    text-align: center;
+}
+
+
 .edit_page_label{
   margin-top: 50px;
   text-align: center

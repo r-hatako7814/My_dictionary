@@ -1,35 +1,35 @@
 <div class = "customer_edit_page">
-<h1 class="edit_page_label"> 会員情報編集</h1>
-<hr>
-<%= form_with model:@customer,url:customers_path, local:true do |f| %>
-<div class = "customer_edit_image">
-  <%= attachment_image_tag @customer, :customer_image, :fill, 60, 60, fallback: "no_image.jpg" %></br>
-<div class = "customer_edit_image_btn">
-  <%= f.attachment_field :customer_image, placeholder: "プロフィール画像" %>
-</div>
-<div class = "edit_label_name">
-  <%= f.label "氏名" %>
-</div>
-<div class = "edit_name_field">
-  <%= f.text_field :last_name, autofocus: true %>
-  <%= f.text_field :first_name, autofocus: true %>
-</div>
-<div class = "edit_label_kana">
-  <%= f.label "フリガナ" %>
-</div>
-<div class = "edit_kana_field">
-  <%= f.text_field :last_name_kana, autofocus: true %>
-  <%= f.text_field :first_name_kana, autofocus: true %>
-</div>
-<div class = "edit_label_email">
-  <%= f.label "メールアドレス" %>
-</div>
-<div class = "edit_email_field">
-  <%= f.text_field :email, autofocus: true %>
-</div>
-<div class = "edit_btn">
-  <%= f.submit '編集内容を保存', class: "btn btn-primary" %>
-  <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger ml-3" %>
-</div>
-<% end %>
+  <h1 class="edit_page_label"> 会員情報編集</h1>
+  <hr>
+  <%= form_with model:@customer,url:customers_path, local:true do |f| %>
+    <div class = "customer_edit_image">
+      <%= attachment_image_tag @customer, :customer_image, :fill, 60, 60, fallback: "no_image.jpg" %></br>
+    <div class = "customer_edit_image_btn">
+      <%= f.attachment_field :customer_image, placeholder: "プロフィール画像" %>
+    </div>
+    <div class = "edit_label_name">
+      <%= f.label "氏名" %>
+    </div>
+    <div class = "edit_name_field">
+      <%= f.text_field :last_name, autofocus: true %>
+      <%= f.text_field :first_name, autofocus: true %>
+    </div>
+    <div class = "edit_label_kana">
+      <%= f.label "フリガナ" %>
+    </div>
+    <div class = "edit_kana_field">
+      <%= f.text_field :last_name_kana, autofocus: true %>
+      <%= f.text_field :first_name_kana, autofocus: true %>
+    </div>
+    <div class = "edit_label_email">
+      <%= f.label "メールアドレス" %>
+    </div>
+    <div class = "edit_email_field">
+      <%= f.text_field :email, autofocus: true %>
+    </div>
+    <div class = "edit_btn">
+      <%= f.submit '編集内容を保存', class: "btn btn-primary" %>
+      <%= link_to "退会する", customers_unsubscribe_path, class: "btn btn-danger ml-3" %>
+    </div>
+  <% end %>
 </div>
