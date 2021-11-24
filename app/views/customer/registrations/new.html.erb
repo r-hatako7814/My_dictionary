@@ -1,66 +1,68 @@
-<h2 class = "text-center">新規登録</h2>
-<hr>
-<div class = "container">
-  <%= form_with model: @customer, url: customer_registration_path, id: 'new_user', class: 'new_customer', local: true do |f| %>
-        <%= render "customer/shared/error_messages", resource: resource %>
-    <table  class = "table ml-5">
+<div class = "registrations_new">
+  <h2 class = "text-center">新規登録</h2>
+  <hr>
+  <div class = "container">
+    <%= form_with model: @customer, url: customer_registration_path, id: 'new_user', class: 'new_customer', local: true do |f| %>
+          <%= render "customer/shared/error_messages", resource: resource %>
+      <table  class = "table ml-5">
+        <tr>
+          <td style="border:none;">
+            <%= f.label "名前", class: "col-sm-310 col-form-label" %>
+          </td>
+          <td style="border:none;">
+            <%= f.text_field :last_name, autofocus: true, placeholder: "(姓)", class: "col-sm-4 col-form-control" %>
+            <%= f.text_field :first_name, autofocus: true, placeholder: "(名)", class: "col-sm-4 col-form-control"%>
+          </td>
+        </tr>
+        <tr>
+          <td style="border:none;">
+            <%= f.label "フリガナ", class: "col-sm-310 col-form-label"%>
+          </td>
+          <td style="border:none;">
+            <%= f.text_field :last_name_kana, autofocus: true, placeholder:"(セイ)", class: "col-sm-4 col-form-control" %>
+            <%= f.text_field :first_name_kana, autofocus: true, placeholder:"(メイ)", class: "col-sm-4 col-form-control" %>
+          </td>
+        </tr>
+        <tr>
+          <td style="border:none;">
+            <%= f.label "メールアドレス", class: "col-sm-310 col-form-label" %>
+          </td>
+          <td style="border:none;">
+            <%= f.text_field :email, autofocus: true, placeholder: "sample@sample.com" %>
+          </td>
+        </tr>
+        <tr>
+          <td style="border:none;">
+            <%= f.label "パスワード(6文字以上)", class: "col-sm-310 col-form-label" %>
+          </td>
+          <td style="border:none;">
+            <%= f.password_field :password, placeholder: "new-password" %>
+          </td>
+        </tr>
+        <tr>
+          <td style="border:none;">
+            <%= f.label "パスワード(確認用)", class: "col-sm-310 col-form-label" %>
+          </td>
+          <td style="border:none;">
+            <%= f.password_field :password_confirmation, placeholder: "new-password" %>
+          </td>
+        </tr>
+        <tr>
+          <td style="border:none;">
+            <%= f.label " ", class: "col-sm-310 col-form-label" %>
+          </td>
+          <td style="border:none;">
+            <%= f.submit "新規登録", class: "push mt-3 mr-5 col-sm-5" %>
+          </td>
+        </tr>
+      <% end %>
       <tr>
         <td style="border:none;">
-          <%= f.label "名前", class: "col-sm-310 col-form-label" %>
-        </td>
-        <td style="border:none;">
-          <%= f.text_field :last_name, autofocus: true, placeholder: "(姓)", class: "col-sm-4 col-form-control" %>
-          <%= f.text_field :first_name, autofocus: true, placeholder: "(名)", class: "col-sm-4 col-form-control"%>
+          <h4 class="new">既に登録済みの方</h4>
+          <%= render "customer/shared/links" %>
         </td>
       </tr>
-      <tr>
-        <td style="border:none;">
-          <%= f.label "フリガナ", class: "col-sm-310 col-form-label"%>
-        </td>
-        <td style="border:none;">
-          <%= f.text_field :last_name_kana, autofocus: true, placeholder:"(セイ)", class: "col-sm-4 col-form-control" %>
-          <%= f.text_field :first_name_kana, autofocus: true, placeholder:"(メイ)", class: "col-sm-4 col-form-control" %>
-        </td>
-      </tr>
-      <tr>
-        <td style="border:none;">
-          <%= f.label "メールアドレス", class: "col-sm-310 col-form-label" %>
-        </td>
-        <td style="border:none;">
-          <%= f.text_field :email, autofocus: true, placeholder: "sample@sample.com" %>
-        </td>
-      </tr>
-      <tr>
-        <td style="border:none;">
-          <%= f.label "パスワード(6文字以上)", class: "col-sm-310 col-form-label" %>
-        </td>
-        <td style="border:none;">
-          <%= f.password_field :password, placeholder: "new-password" %>
-        </td>
-      </tr>
-      <tr>
-        <td style="border:none;">
-          <%= f.label "パスワード(確認用)", class: "col-sm-310 col-form-label" %>
-        </td>
-        <td style="border:none;">
-          <%= f.password_field :password_confirmation, placeholder: "new-password" %>
-        </td>
-      </tr>
-      <tr>
-        <td style="border:none;">
-          <%= f.label " ", class: "col-sm-310 col-form-label" %>
-        </td>
-        <td style="border:none;">
-          <%= f.submit "新規登録", class: "push mt-3 mr-5 col-sm-5" %>
-        </td>
-      </tr>
-    <% end %>
-    <tr>
-      <td style="border:none;">
-        <h4 class="new">既に登録済みの方</h4>
-        <%= render "customer/shared/links" %>
-      </td>
-    </tr>
-  </table>
+    </table>
+    </div>
   </div>
 </div>
