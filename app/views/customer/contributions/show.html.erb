@@ -23,12 +23,13 @@
         <td><%= @contribution.body %></td>
       </tr>
       <tr>
-        <td>投稿ジャンル</td>
-        <% @contribution.genres.each do |genre| %>
-        <td>
-          <%= genre.name %>
+        <td class = genre_box>投稿ジャンル</td>
+
+        <td class = "genre_item">
+          <% @contribution.genres.each do |genre| %>
+           <%= genre.name + "  " %>
+          <% end %>
         </td>
-        <% end %>
       </tr>
       <tr>
         <td>投稿日時</td>

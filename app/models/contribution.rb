@@ -17,4 +17,12 @@ class Contribution < ApplicationRecord
       Contribution.all
     end
   end
+
+  def by_title_like?(keyword)
+    if keyword.present?
+      Contribution.where(["title like?", "%#{keyword}%"])
+    else
+      Contribution.all
+    end
+  end
 end

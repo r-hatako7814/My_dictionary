@@ -7,7 +7,7 @@
 
       <div class = "index-search-form ml-5"></br>
         <%= form_with url: index_search_path, method: :get, local: true do |f| %>
-          <%= f.text_field :keyword, value: @keyword %>
+          <%= f.text_field :keyword, value: @keyword, id: "index_search_keyword" %>
           <%= f.submit "検索" %>
         <% end %>
       </div>

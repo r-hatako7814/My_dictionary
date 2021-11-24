@@ -21,5 +21,6 @@
 //= require("@rails/activestorage").start()
 //= require("channels")
 //= require("../search_post")
-
+//= require jquery-ui/widgets/autocomplete
+//= require jquery_ujs
 //= require_tree .

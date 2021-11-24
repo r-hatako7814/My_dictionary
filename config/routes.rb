@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'show_search' => 'customer/customers#show_search'
   get 'increment_show_search' => 'customer/customers#increment_show_search'
 
+  get 'autocomplete_index_search' => 'customer/contributions#autocomplete_index_search'
 
   scope module: :customer do
     resources :contributions, only: [:create,:index,:show,:edit,:update,:destroy] do

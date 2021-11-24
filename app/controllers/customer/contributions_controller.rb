@@ -3,8 +3,11 @@ class Customer::ContributionsController < ApplicationController
   def create
     @contribution = Contribution.new(contribution_params)
     @contribution.customer = current_customer
-    @contribution.save!
+    if @contribution.save
       redirect_to customers_my_dictionary_path(current_customer)
+    else
+      redirect_to customers_my_dictionary_path(current_customer)
+    end
   end
 
   def index
@@ -36,6 +39,11 @@ class Customer::ContributionsController < ApplicationController
     @keyword = params[:keyword]
     @contributions = Contribution.order("created_at DESC").page(params[:page]).per(6).search(params[:keyword])
     render "customer/contributions/index"
+  end
+
+  def autocomplete_index_search
+    contributions = Contribution.where(["title like?", "%#{params[:keyword]}%"]).limit(5).pluck(:title).reject(&:blank?) #Contribution.by_title_like?(params[:keyword]).pluck(:title).reject(&:blank?)
+    render json: contributions
   end
 
 
