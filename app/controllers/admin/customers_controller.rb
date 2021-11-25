@@ -1,4 +1,6 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @customers = Customer.all.page(params[:page]).per(10)
   end
@@ -16,10 +18,10 @@ class Admin::CustomersController < ApplicationController
     @customer.update!(admin_customer_params)
     redirect_to admin_customer_path
   end
-  
+
   private
-  
+
   def admin_customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana,:email, :is_deleted) 
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana,:email, :is_deleted)
   end
 end

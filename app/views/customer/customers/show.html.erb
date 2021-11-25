@@ -1,7 +1,9 @@
 <div class = "bg_my_dictionary">
   <div class = "container">
     <div class = "row">
-
+    <% @contribution.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
       <div class = "col-md-3">
         <div class = "text-center" style = "margin: 100px;">
           <%= attachment_image_tag @customer, :customer_image, :fill, 60, 60, fallback: "no_image.jpg" %>

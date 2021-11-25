@@ -25,4 +25,7 @@ class Contribution < ApplicationRecord
       Contribution.all
     end
   end
+
+  # validates :title, {presence: true}
+  # validates :body, {presence: true, length: {maximum:400}}
 end

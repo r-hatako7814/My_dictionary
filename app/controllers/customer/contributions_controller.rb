@@ -1,13 +1,13 @@
 class Customer::ContributionsController < ApplicationController
+before_action :authenticate_customer!
+before_action :ensure_current_customer, {only: [:edit, :update]}
+
 
   def create
     @contribution = Contribution.new(contribution_params)
     @contribution.customer = current_customer
-    if @contribution.save
-      redirect_to customers_my_dictionary_path(current_customer)
-    else
-      redirect_to customers_my_dictionary_path(current_customer)
-    end
+    @contribution.save!
+    redirect_to customers_my_dictionary_path(current_customer)
   end
 
   def index
@@ -25,8 +25,11 @@ class Customer::ContributionsController < ApplicationController
 
   def update
     @contribution = Contribution.find(params[:id])
-    @contribution.update(contribution_params)
-    redirect_to customers_my_dictionary_path(current_customer)
+    if @contribution.update(contribution_params)
+      redirect_to customers_my_dictionary_path(current_customer)
+    else
+      render "customer/contribution/edit"
+    end
   end
 
   def destroy
@@ -46,6 +49,12 @@ class Customer::ContributionsController < ApplicationController
     render json: contributions
   end
 
+  def ensure_current_customer
+    if current_customer.id != params[:id].to_i
+      flash[:notice]="権限がありません"
+      redirect_to contributions_path
+    end
+  end
 
   private
 
