@@ -4,7 +4,6 @@ before_action :ensure_current_customer, {only: [:edit, :update]}
 
 
   def create
-    @customer = Customer.find(params[:id])
     @contribution = Contribution.new(contribution_params)
     @contribution.customer = current_customer
     @contribution.save!
@@ -51,7 +50,8 @@ before_action :ensure_current_customer, {only: [:edit, :update]}
   end
 
   def ensure_current_customer
-    if current_customer.id != params[:id].to_i
+    contribution = Contribution.find(params[:id])
+    if current_customer.id != contribution.customer_id.to_i
       redirect_to contributions_path
     end
   end

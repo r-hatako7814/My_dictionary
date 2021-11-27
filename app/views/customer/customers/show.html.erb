@@ -5,7 +5,7 @@
       <%= message %>
     <% end %>
       <div class = "col-md-3">
-        <div class = "text-center" style = "margin: 100px;">
+        <div class = "text-center" style = "margin: 50px;">
           <%= attachment_image_tag @customer, :customer_image, :fill, 60, 60, fallback: "no_image.jpg" %>
         </div>
         <table border = "5" rules = "none" style = width:100%;>
@@ -24,22 +24,22 @@
           </tr>
         </table>
         <div class = "mt-3">
-          <%= link_to "ユーザー情報編集", customers_edit_path(@customer.id), class:"btn btn-outline-secondary btn-block" %>
+          <%= link_to "自身のユーザー情報編集", customers_edit_path(@customer.id), class:"btn btn-outline-secondary btn-block" %>
         </div>
         <h3 class = "mt-2">新規投稿</h3>
         <%= form_with model:@contribution,url:contributions_path, method: :post, local:true do |f| %>
         <div class = "mt-4">
-          <%= f.text_field :title , placeholder: "タイトル",size:"28%" %>
+          <%= f.text_field :title , placeholder: "タイトル(自身の投稿)",size:"28%" %>
         </div>
         <div class = "mt-1">
-          <%= f.text_area :body , placeholder: "内容" ,size:"28%" %>
+          <%= f.text_area :body , placeholder: "内容(自身の投稿)" ,size:"28%" %>
         </div>
           <%= f.label :genre, 'ジャンル' %></br>
           <%= f.fields_for :contribution_genres do |contribution_genre| %>
             <label>
               <%= contribution_genre.check_box :genre_id, { checked: false }, contribution_genre.object.genre_id, false %>
               <%= contribution_genre.object.genre.name %>
-            </label>
+            </label></br>
           <% end %>
           <%= f.submit "知識を保存", class: "btn btn-success" %>
         <% end %>
