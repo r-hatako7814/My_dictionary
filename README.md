@@ -1,4 +1,3 @@
-Read me
 
 # My dictionary
 
@@ -38,6 +37,3 @@ https://docs.google.com/spreadsheets/d/11Wuu6YCE3TT2BolZw4t-ow8O1b9gqWBMye3T88Kz
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-
-## 使用素材
-<!-- - 追加の可能性があるため削除してません -->
