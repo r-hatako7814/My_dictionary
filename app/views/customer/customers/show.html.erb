@@ -1,9 +1,6 @@
 <div class = "bg_my_dictionary">
   <div class = "container">
     <div class = "row">
-    <% @contribution.errors.full_messages.each do |message| %>
-      <%= message %>
-    <% end %>
       <div class = "col-md-3">
         <div class = "text-center" style = "margin: 50px;">
           <%= attachment_image_tag @customer, :customer_image, :fill, 60, 60, fallback: "no_image.jpg" %>
@@ -57,17 +54,6 @@
           <% end %>
           </div>
 
-
-          <!--<p id = "notice"><%#= notice %></p>-->
-          <!--<form id = "search_form">-->
-          <!--  <label for = "search_input">-->
-          <!--    検索-->
-          <!--  </label>-->
-          <!--  <input type = "text" id = "search_input" autocomplete = "off">-->
-          <!--</form>-->
-          <!--<div id = "search_result_field"></div>-->
-
-
           <div class = "show_search_result">
             <table class = "text-center" style = "width:100%;">
             <thead>
@@ -91,8 +77,7 @@
                       <%= render 'customer/favorites/favorite-btn', contribution: contribution %>
                     </p>
                   </td>
-
-              <% end %>
+　　　　　　　<% end %>
                 </tr>
             <% end %>
             </tbody>

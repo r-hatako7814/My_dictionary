@@ -27,13 +27,6 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create,:destroy]
     end
   end
-  # ↓これを定義
-  # post "/contributions/create" => "customer/contributions#create"
-  # get "/contributions/index" => "customer/contributions#index"
-  # get "/contributions/show" => "customer/contributions#show"
-  # get "/contributions/edit" => "customer/contributions#edit"
-  # patch "/contributions/update" => "customer/contributions#update"
-  # delete "/contributions/destroy" => "customer/contributions#destroy"
 
 
 

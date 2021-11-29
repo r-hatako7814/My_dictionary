@@ -36,13 +36,21 @@ function contributionMsgToHTML(contribution) {
                     詳細へ
                   </a>
                 </td>
-                <td>♡${contribution.favorite.length}いいね</td>
-              </tr>`;
+                <td>
+                  ♡${contribution.favorite.length}いいね
+                </td>
 
-              // <td>${contribution.created_at.strftime('%Y/%m/%d %H:%M:%S')}</td>
+              </tr>`;
+                // ↓強制的にいいねを押せるようにはできるけど条件分岐が必要になる
+                // <td>
+                //   <a class="favorite-btn-${contribution.id}" data-remote="true" rel="nofollow" data-method="post" href="/contributions/${contribution.id}/favorites">
+                //     ♡${contribution.favorite.length}いいね
+                //   </a>
+                // </td>
     search_list.append(html);
 }
 function appendErrMsgToHTML(msg) {
+  // var search_list = $(".show_search_result table tbody");
   var html = `<div class='name'>${ msg }</div>`
   search_list.append(html);
 
@@ -76,59 +84,3 @@ $(document).on("turbolinks:load", function() {
     });
   });
 });
-
-
-//     if (input.length === 0) {
-//       $('#contribution-search-result').empty();
-//     }
-
-//     else if (input.length !== 0){
-//       $('#contribution-search-result').empty();
-//       contributions.forEach(function(contribution){
-//         appendContribution(contribution)
-//       });
-//     }
-
-//     else {
-//       $('#contribution-search-result').empty();
-//       appendErrMsgToHTML("一致する内容は見つかりません");
-//     }
-//   })
-// });
-// });
-// // $(function() {
-//   .fail(function() {
-//     alert('検索に失敗しました');
-//   });
-
-
-
-
-
-
-
-
-
-
-
-// $(document).on('turbolinks:load', function(){
-
-//     var search_list = $("#contribution-search-result");
-//     var member_list = $("#member-append");
-
-//     function appendContribution(contribution){
-//         var html =
-//                     `<div class="contributions-search clearfix">
-//                         <p class="contribution-search__title">${contribution.title}</p>
-//                         <div class="contribution-search-add contribution-search__btn contribution-search__btn--add" data-contribution-id=${contribution.id} data-contribution-title=${contribution.title}>追加</div>
-//                     </div>`;
-//                     search_list.append(html);
-//     }
-
-//     function appendErrMsgToHTML(msg){
-//         var html =
-//                     `<div class="contribution-search clearfix">
-//                         <p class="contribution-search__title">${msg}</p>
-//                     </div>`;
-//                     search_list.append(html);
-//     }

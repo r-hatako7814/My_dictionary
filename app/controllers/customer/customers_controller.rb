@@ -19,7 +19,6 @@ before_action :authenticate_customer!
     @customer = current_customer
     if @customer.update(customer_params)
       redirect_to customers_my_dictionary_path(current_customer)
-      flash[:notice_customer] = "会員情報が更新されました。"
     else
       @customer = current_customer
       render :edit
@@ -34,7 +33,6 @@ before_action :authenticate_customer!
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
-    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to new_customer_session_path
   end
 
