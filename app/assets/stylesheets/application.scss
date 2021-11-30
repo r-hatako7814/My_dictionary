@@ -51,6 +51,11 @@
  .sessions_new{
   margin-bottom: 300px;
  }
+
+ .field_with_errors {
+  display: contents;
+}
+
   @import "bootstrap";
   @import 'font-awesome-sprockets';
   @import 'font-awesome';

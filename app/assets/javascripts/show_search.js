@@ -50,10 +50,9 @@ function contributionMsgToHTML(contribution) {
     search_list.append(html);
 }
 function appendErrMsgToHTML(msg) {
-  // var search_list = $(".show_search_result table tbody");
+  var search_list = $(".show_search_result table");
   var html = `<div class='name'>${ msg }</div>`
-  search_list.append(html);
-
+  search_list.after(html);
 }
 
 
@@ -68,14 +67,17 @@ $(document).on("turbolinks:load", function() {
         dataType: 'json'
     })
     .done(function(contributions){
-      $("#show_search_result").empty();
+      $(".show_search_result").empty();
       if (contributions.length !== 0) {
+        $(".show_search_result").html(' <table class = "text-center" style = "width:100%;"> <thead><tr><td>記述内容</td><td>意味</td><td>記述日</td><td>詳細</td></tr></thead><tbody></tbody></table>')
         $(".show_search_result table tbody").html(null);
         contributions.forEach(function(contribution){
         contributionMsgToHTML(contribution);
         });
       }
       else{
+      $(".show_search_result").empty();
+      $(".show_search_result").html(' <table class = "text-center" style = "width:100%;"> <thead><tr><td>記述内容</td><td>意味</td><td>記述日</td><td>詳細</td></tr></thead><tbody></tbody></table>')
       appendErrMsgToHTML("一致する投稿がありません");
       }
     })
