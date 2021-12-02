@@ -1,0 +1,24 @@
+  <div class = "contacts_form">
+    <% if @contact.errors.any? %>
+      <%= @contact.errors.count %>件のエラーがあります
+          <% @contact.errors.full_messages.each do |message| %>
+            <%= message_i18n %>
+          <% end %>
+    <% end %>
+    <%= form_with model: @contact, url: contacts_confirm_path, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :name, 'お名前*' %>
+      <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+    </div>
+    <div class = "form-group">
+      <%= f.select :subject, Contact.subjects.keys.map {|k| [I18n.t("enums.contact.subject.#{k}"), k]} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :message, 'メッセージ*' %>
+      <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.submit '入力内容確認' %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+ja:
+  enums:
+    contact:
+      subject:
+        request: "ご意見・要望"
+        stop_request: "アカウント停止依頼"
+        other: "その他"
