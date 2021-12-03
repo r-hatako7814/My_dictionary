@@ -2,7 +2,7 @@
     <% if @contact.errors.any? %>
       <%= @contact.errors.count %>件のエラーがあります
           <% @contact.errors.full_messages.each do |message| %>
-            <%= message_i18n %>
+            <%= message %>
           <% end %>
     <% end %>
     <%= form_with model: @contact, url: contacts_confirm_path, local: true do |f| %>
