@@ -2,11 +2,12 @@ class Customer::ContactsController < ApplicationController
   def new
     @contact = Contact.new
   end
-
+  
+  # ↓調べるとアンチパターンとの指摘があるが現状これしか対応策なし（rb:10）
   def confirm
     @contact = Contact.new(contact_params)
     if @contact.invalid?
-      render :new
+      redirect_to new_contact_path, flash: { error: @contact.errors.full_messages }
     end
   end
 

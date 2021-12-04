@@ -10,3 +10,5 @@ ja:
       contact:
         name: "お名前"
         message: "メッセージ"
+        email: "返信用メールアドレス"
+        phone_number: "電話番号"

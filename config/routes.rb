@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  
+
   post 'contacts/confirm' => 'customer/contacts#confirm'
+  get 'contacts/confirm' => 'customer/contacts#confirm'
   post 'contacts/back' => 'customer/contacts#back'
+  get 'contacts/back' => 'customer/contacts#back'
   get 'contacts/done' => 'customer/contacts#done'
   # 顧客用
   # URL /customers/sign_in ...

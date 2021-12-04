@@ -1,19 +1,28 @@
   <div class = "contacts_form">
-    <% if @contact.errors.any? %>
-      <%= @contact.errors.count %>件のエラーがあります
-          <% @contact.errors.full_messages.each do |message| %>
-            <%= message %>
-          <% end %>
-    <% end %>
+    <% if flash[:error].present? %>
+    <ul class="errors mx-auto" style = "color: red; border: groove thick yellow; background-color: black; width: 50%; text-align: center; list-style-type: none;">
+      <% flash[:error].each do |e| %>
+        <li><%= e %></li>
+      <% end %>
+    </ul>
+  <% end %>
     <%= form_with model: @contact, url: contacts_confirm_path, local: true do |f| %>
-    <div class="form-group">
+    <div class="form-group" style = "width: 20%;">
       <%= f.label :name, 'お名前*' %>
       <%= f.text_field :name, autofocus: true, class: 'form-control' %>
     </div>
-    <div class = "form-group">
+    <div class="form-group" style = "width: 20%;">
+      <%= f.label :email, '返信用メールアドレス*' %>
+      <%= f.text_field :email, autofocus: true, class: 'form-control' %>
+    </div>
+    <div class="form-group" style = "width: 20%;">
+      <%= f.label :phone_number, '電話番号' %>
+      <%= f.text_field :phone_number, autofocus: true, class: 'form-control' %>
+    </div>
+    <div class = "form-group" style = "width: 30%;">
       <%= f.select :subject, Contact.subjects.keys.map {|k| [I18n.t("enums.contact.subject.#{k}"), k]} %>
     </div>
-    <div class="form-group">
+    <div class="form-group" style = "width: 50%;">
       <%= f.label :message, 'メッセージ*' %>
       <%= f.text_area :message, size: '10x10', class: 'form-control' %>
     </div>
