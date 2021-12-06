@@ -1,6 +1,6 @@
-  <div class = "contacts_form">
+  <div class = "contacts_form ml-3">
     <% if flash[:error].present? %>
-    <ul class="errors mx-auto" style = "color: red; border: groove thick yellow; background-color: black; width: 50%; text-align: center; list-style-type: none;">
+    <ul class="errors mx-auto" style = "color: red; border: groove thick yellow; width: 50%; text-align: center; list-style-type: none;">
       <% flash[:error].each do |e| %>
         <li><%= e %></li>
       <% end %>
@@ -16,7 +16,7 @@
       <%= f.text_field :email, autofocus: true, class: 'form-control' %>
     </div>
     <div class="form-group" style = "width: 20%;">
-      <%= f.label :phone_number, '電話番号' %>
+      <%= f.label :phone_number, '電話番号*' %>
       <%= f.text_field :phone_number, autofocus: true, class: 'form-control' %>
     </div>
     <div class = "form-group" style = "width: 30%;">

@@ -4,5 +4,5 @@ class Contact < ApplicationRecord
   validates :name, presence: true
   validates :message, presence: true
   validates :email, presence: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, numericality: true
 end
