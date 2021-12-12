@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   patch "/customers/withdraw" => "customer/customers#withdraw"
 
   devise_for :customers,skip: [:passwords,], controllers: {
+    omniauth_callbacks: 'customer/omniauth_callbacks',
     registrations: "customer/registrations",
     sessions: 'customer/sessions'
   }

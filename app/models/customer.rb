@@ -7,7 +7,21 @@ class Customer < ApplicationRecord
   has_many :contributions, dependent: :destroy
   has_many :favorites, dependent: :destroy
   attachment :customer_image
+  
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    customer = Customer.where(email: data['email']).first
 
+    # Uncomment the section below if you want customers to be created if they don't exist
+    # unless customer
+    #     customer = Customer.create(name: data['name'],
+    #        email: data['email'],
+    #        password: Devise.friendly_token[0,20]
+    #     )
+    # end
+    customer
+  end
+  
   def already_favorited?(contribution)
     favorites.where(contribution_id: contribution.id).exists?
   end
