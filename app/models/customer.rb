@@ -7,24 +7,24 @@ class Customer < ApplicationRecord
   has_many :contributions, dependent: :destroy
   has_many :favorites, dependent: :destroy
   attachment :customer_image
-  
+
   def self.from_omniauth(access_token)
     data = access_token.info
     customer = Customer.where(email: data['email']).first
 
-    # Uncomment the section below if you want customers to be created if they don't exist
-    # unless customer
-    #     customer = Customer.create(name: data['name'],
-    #        email: data['email'],
-    #        password: Devise.friendly_token[0,20]
-    #     )
-    # end
+
+     unless customer
+         customer = Customer.create(last_name: data['name'],
+            email: data['email'],
+            password: Devise.friendly_token[0,20]
+         )
+     end
     customer
   end
-  
-  
-  
-  
+
+
+
+
 #   def self.from_omniauth(auth)
 #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
 #     user.email = auth.info.email
