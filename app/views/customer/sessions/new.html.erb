@@ -30,6 +30,6 @@
       <%= f.submit "ログイン" %>
     </div>
   <% end %>
-
+<%= link_to "Googleでサインイン",customer_google_oauth2_omniauth_authorize_path, method: :post %></br>
   <%= render "customer/shared/links" %>
 </div>
