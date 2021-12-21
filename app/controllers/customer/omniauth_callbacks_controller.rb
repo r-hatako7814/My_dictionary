@@ -9,7 +9,7 @@ class Customer::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
         sign_in_and_redirect @customer, event: :authentication
       else
         session['devise.google_data'] = request.env['omniauth.auth'].except(:extra) # Removing extra as it can overflow some session stores
-        redirect_to new_customer_registration_url
+        redirect_to new_customer_registration_path
       end
   end
   # You should configure your model like this:

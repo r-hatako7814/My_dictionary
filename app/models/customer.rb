@@ -14,7 +14,11 @@ class Customer < ApplicationRecord
 
 
      unless customer
-         customer = Customer.create(last_name: data['name'],
+         customer = Customer.create(
+           last_name: data['family_name'],
+           
+            # last_name: data['last_name'],
+            first_name: data['first_name'],
             email: data['email'],
             password: Devise.friendly_token[0,20]
          )
