@@ -8,22 +8,46 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   attachment :customer_image
 
-  def self.from_omniauth(access_token)
-    data = access_token.info
-    customer = Customer.where(email: data['email']).first
+  # def self.from_omniauth(access_token)
+  #   data = access_token.info
+  #   customer = Customer.where(email: data['email']).first
 
 
-     unless customer
-         customer = Customer.create(
-           last_name: data['family_name'],
+  #   unless customer
+  #       customer = Customer.create(
+  #         last_name: data['family_name'],
            
-            # last_name: data['last_name'],
-            first_name: data['first_name'],
-            email: data['email'],
-            password: Devise.friendly_token[0,20]
-         )
-     end
-    customer
+  #           # last_name: data['last_name'],
+  #           first_name: data['first_name'],
+  #           email: data['email'],
+  #           password: Devise.friendly_token[0,20]
+  #       )
+  #   end
+  #   customer
+  # end
+  
+  
+  
+  
+  
+  def self.find_or_create_for_oauth(auth)
+    find_or_create_by!(email: auth.info.email) do |customer|
+      customer.provider = auth.provider
+      customer.uid = auth.uid
+      customer.name = auth.info.name
+      customer.email = auth.info.email
+      password = Devise.friendly_token[0..5]
+      logger.debug password
+      customer.password = password
+    end
+  end
+
+  def new_with_session(params, session)
+    if customer_attributes = session['devise.customer_attributes']
+      new(customer_attributes) { |customer| customer.attributes = params }
+    else
+      super
+    end
   end
 
 
