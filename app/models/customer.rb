@@ -36,6 +36,8 @@ class Customer < ApplicationRecord
       customer.uid = auth.uid
       customer.last_name = auth.info.last_name
       customer.first_name = auth.info.first_name
+      
+      # ↓googleでサインアップする際はフリガナカラムに名前がそのまま代入される
       customer.last_name_kana = auth.info.last_name
       customer.first_name_kana = auth.info.first_name
       customer.email = auth.info.email
