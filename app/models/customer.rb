@@ -34,7 +34,10 @@ class Customer < ApplicationRecord
     find_or_create_by!(email: auth.info.email) do |customer|
       customer.provider = auth.provider
       customer.uid = auth.uid
-      customer.name = auth.info.name
+      customer.last_name = auth.info.last_name
+      customer.first_name = auth.info.first_name
+      customer.last_name_kana = auth.info.last_name
+      customer.first_name_kana = auth.info.first_name
       customer.email = auth.info.email
       password = Devise.friendly_token[0..5]
       logger.debug password

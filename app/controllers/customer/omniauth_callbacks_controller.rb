@@ -7,13 +7,15 @@ class Customer::OmniauthCallbacksController < Devise::OmniauthCallbacksControlle
 
 
 
-  def google
+  def google_oauth2
     callback
   end
 
 
+private
+
   def callback
-      @customer = Customaer.find_or_create_for_oauth(request.env['omniauth.auth'])
+      @customer = Customer.find_or_create_for_oauth(request.env['omniauth.auth'])
 
       if @customer.persisted?
         sign_in_and_redirect @customer
